@@ -26,7 +26,17 @@ $(function () {
         $(".filters .amenities h4").text(Object.values(amenities).join(', '));
     })
 
-    $.get("http://0.0.0.0:5001/api/v1/status/", function (response) {
-        console.log(response);
+    /* get the status of the request */
+    // $.get("http://0.0.0.0:5001/api/v1/status/", function (response) {
+    //     console.log(response);
+    // })
+    $.get("http://localhost:5001/api/v1/status/", function (response) {
+        console.log(response.status)
+        if (response.status === "OK") {
+            $("#api_status").addClass("available")
+        }
+        else {
+            $("#api_status").removeClass("available")
+        }
     })
 });
